@@ -44,8 +44,7 @@ const userLogin = async (req, res, next) => {
         const validPass = await bcrypt.compare(params.password, user.password)
         if(!validPass) return response(res, 0, 'invalid password', 400)
 
-        const loggedInUser = await UserService.userLogin()
-        return response(res, 1, loggedInUser, 200)
+        return response(res, 1, 'logged in', 200)
     } catch(error) {
         next(error)
     }
