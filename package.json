@@ -1,5 +1,5 @@
 {
-  "name": "fibzio-api",
+  "name": "message-api",
   "version": "1.0.0",
   "description": "CRUD api",
   "main": "index.js",
@@ -9,7 +9,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://gitlab.com/yasarkhann/fibzio-api.git"
+    "url": "git+https://github.com/khanyasar022/message-api.git"
   },
   "keywords": [],
   "author": "",
