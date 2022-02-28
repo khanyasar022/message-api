@@ -5,6 +5,7 @@ const User = require('../../models/userSchema')
 const UserValidations = require('./validations')
 const UserService = require('../../services/users')
 const bcrypt = require('bcrypt')
+const jwt = require('jsonwebtoken')
 
 const userSignup = async (req, res, next) => {
     try {
@@ -44,7 +45,10 @@ const userLogin = async (req, res, next) => {
         const validPass = await bcrypt.compare(params.password, user.password)
         if(!validPass) return response(res, 0, 'invalid password', 400)
 
-        return response(res, 1, 'logged in', 200)
+        //create and assign a token
+        const token = jwt.sign({_id: user._id}, process.env.TOKEN_SECRET)
+
+        return res.header('auth-token', token).send(token)
     } catch(error) {
         next(error)
     }
